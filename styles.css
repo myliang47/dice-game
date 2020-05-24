@@ -1,0 +1,33 @@
+body {
+  background-color: turquoise !important;
+}
+
+.container-fluid {
+  padding-top: 2rem;
+  font-family: 'Chelsea Market', cursive;
+}
+
+.title {
+  text-align: center;
+}
+
+.refresh-btn {
+  position: relative;
+  top: 15px;
+}
+
+.add-padding {
+  padding: 3rem;
+}
+
+.dice {
+  width: 40%;
+}
+
+.spacing-after-dice {
+  padding: 0.4rem;
+}
+
+.spacing-bw-dice {
+  padding: 0.75rem;
+}
