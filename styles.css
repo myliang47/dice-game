@@ -11,9 +11,8 @@ body {
   text-align: center;
 }
 
-.refresh-btn {
-  position: relative;
-  top: 15px;
+.play-img {
+  width: 25%;
 }
 
 .add-padding {

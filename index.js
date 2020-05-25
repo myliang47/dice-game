@@ -1,52 +1,65 @@
-var randNum1, randNum2, newDice1, newDice2;
 
-randNum1 = Math.floor(Math.random() * 6) + 1;
-randNum2 = Math.floor(Math.random() * 6) + 1;
+var playImg = document.querySelector( ".play-img" );
 
-newDice1 = findNewDie(randNum1);
-newDice2 = findNewDie(randNum2);
+playImg.addEventListener( "mouseover", function () {
+  playImg.style.width = "28%";
+  playImg.style.height = "auto";
+});
 
-document.querySelector(".dice1").setAttribute("src", newDice1);
-document.querySelector(".dice2").setAttribute("src", newDice2);
+playImg.addEventListener( "mouseout", function () {
+  playImg.style.width = "25%";
+  playImg.style.height = "auto";
+});
 
-function findNewDie(randNum) {
-  switch (randNum) {
-    case 1:
-      return "images/dice1.png";
+playImg.addEventListener( "click", playClicked );
 
-    case 2:
-      return "images/dice2.png";
-
-    case 3:
-      return "images/dice3.png";
-
-    case 4:
-      return "images/dice4.png";
-
-    case 5:
-      return "images/dice5.png";
-
-    case 6:
-      return "images/dice6.png";
-  }
-}
-
+var randNum1, randNum2, newDiceImage1, newDiceImage2, dice1, dice2;
 var player1Wins = false;
 var player2Wins = false;
 var tie = false;
+var showRefreshButton = false;
 
-if( randNum1 > randNum2 )
+function playClicked()
 {
-  player1Wins = true;
-  document.querySelector( "h1" ).innerText = "🔥 Player 1 Wins!";
-}
-else if( randNum1 < randNum2 )
-{
-  player2Wins = true;
-  document.querySelector( "h1" ).innerText = "Player 2 Wins! 🔥";
-}
-else
-{
-  tie = true;
-  document.querySelector( "h1" ).innerText = "🍀 Tie! 🍀";
+  randNum1 = Math.floor(Math.random() * 6) + 1;
+  randNum2 = Math.floor(Math.random() * 6) + 1;
+
+  newDiceImage1 = "images/dice" + randNum1 + ".png";
+  newDiceImage2 = "images/dice" + randNum2 + ".png";
+
+  dice1 = document.querySelector(".dice1");
+  dice2 = document.querySelector(".dice2");
+
+  dice1.setAttribute("src", newDiceImage1);
+  dice2.setAttribute("src", newDiceImage2);
+
+  if( randNum1 > randNum2 )
+  {
+    player1Wins = true;
+    document.querySelector( "h1" ).innerText = "🔥 Player 1 Wins!";
+  }
+  else if( randNum1 < randNum2 )
+  {
+    player2Wins = true;
+    document.querySelector( "h1" ).innerText = "Player 2 Wins! 🔥";
+  }
+  else
+  {
+    tie = true;
+    document.querySelector( "h1" ).innerText = "🍀 Tie! 🍀";
+  }
+
+  playImg.setAttribute( "src", "images/refresh.png" );
+  showRefreshButton = true;
+
+  if( showRefreshButton )
+  {
+    playImg.addEventListener( "mouseover", function () {
+      playImg.setAttribute( "src", "images/refresh-hover.png" );
+    });
+
+    playImg.addEventListener( "mouseout", function () {
+      playImg.setAttribute( "src", "images/refresh.png" );
+    });
+  }
 }
