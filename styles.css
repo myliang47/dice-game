@@ -1,26 +1,30 @@
-body {
-  background-color: turquoise !important;
-}
-
-.container-fluid {
-  padding-top: 2rem;
+html body {
+  background-color: turquoise;
   font-family: 'Chelsea Market', cursive;
-}
-
-.title {
   text-align: center;
 }
 
-.play-img {
-  width: 2.5rem;
+h1 {
+  margin: 10px auto 80px auto;
 }
 
-.add-padding {
-  padding: 3rem;
+/* prevent div from shifting when play-img changes size */
+/*.fixed-block {
+  display: block;
+}*/
+
+/* used for holding the blocks in the desired position */
+.arbitrary-div {
+  padding: 1rem;
+}
+
+.play-img {
+  margin-top: 2rem;
+  width: 3.5rem;
 }
 
 .dice {
-  width: 40%;
+  width: 30%;
 }
 
 .spacing-after-dice {

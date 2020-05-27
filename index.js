@@ -5,13 +5,13 @@ var showRefreshButton = false;
 playImg.addEventListener( "mouseover", function () {
   if( showRefreshButton == false)
   {
-    playImg.style.width = "2.7rem";
+    playImg.style.width = "3.7rem";
     playImg.style.height = "auto";
   }
 });
 
 playImg.addEventListener( "mouseout", function () {
-  playImg.style.width = "2.5rem";
+  playImg.style.width = "3.5rem";
   playImg.style.height = "auto";
 });
 
