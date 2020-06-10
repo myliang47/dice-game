@@ -1,29 +1,35 @@
-
-var playImg = document.querySelector( ".play-img" );
+var playImg = document.querySelector(".play-img");
 var showRefreshButton = false;
 
-playImg.addEventListener( "mouseover", function () {
-  if( showRefreshButton == false)
-  {
-    playImg.style.width = "3.7rem";
-    playImg.style.height = "auto";
-  }
-});
-
-playImg.addEventListener( "mouseout", function () {
-  playImg.style.width = "3.5rem";
+function playHover() {
+  playImg.style.width = "4.3rem";
   playImg.style.height = "auto";
-});
+}
 
-playImg.addEventListener( "click", playClicked );
+function playNonHover() {
+  playImg.style.width = "4rem";
+  playImg.style.height = "auto";
+}
+
+playImg.addEventListener("touchstart", playHover);
+playImg.addEventListener("touchend", playNonHover);
+playImg.addEventListener("mouseover", playHover);
+playImg.addEventListener("mouseout", playNonHover);
+
+playImg.addEventListener("click", playClicked);
 
 var randNum1, randNum2, newDiceImage1, newDiceImage2, dice1, dice2;
 var player1Wins = false;
 var player2Wins = false;
 var tie = false;
 
-function playClicked()
-{
+function playClicked() {
+
+  playImg.removeEventListener("touchstart", playHover);
+  playImg.removeEventListener("touchend", playNonHover);
+  playImg.removeEventListener("mouseover", playHover);
+  playImg.removeEventListener("mouseout", playNonHover);
+
   randNum1 = Math.floor(Math.random() * 6) + 1;
   randNum2 = Math.floor(Math.random() * 6) + 1;
 
@@ -35,34 +41,40 @@ function playClicked()
 
   dice1.setAttribute("src", newDiceImage1);
   dice2.setAttribute("src", newDiceImage2);
+  dice1.setAttribute("alt", "dice-" + randNum1 + "-dot");
+  dice2.setAttribute("alt", "dice-" + randNum2 + "-dot");
 
-  if( randNum1 > randNum2 )
-  {
+  if (showRefreshButton == false) {
+    document.getElementById("title-game").remove();
+  }
+
+  if (randNum1 > randNum2) {
     player1Wins = true;
-    document.querySelector( "h1" ).innerText = "🔥 Player 1 Wins!";
-  }
-  else if( randNum1 < randNum2 )
-  {
+    document.querySelector("h1").innerText = "🔥 Player 1 Wins!";
+  } else if (randNum1 < randNum2) {
     player2Wins = true;
-    document.querySelector( "h1" ).innerText = "Player 2 Wins! 🔥";
-  }
-  else
-  {
+    document.querySelector("h1").innerText = "Player 2 Wins! 🔥";
+  } else {
     tie = true;
-    document.querySelector( "h1" ).innerText = "🍀 Tie! 🍀";
+    document.querySelector("h1").innerText = "🍀 Tie! 🍀";
   }
 
-  playImg.setAttribute( "src", "images/refresh.png" );
   showRefreshButton = true;
+  playImg.setAttribute("src", "images/refresh.png");
 
-  if( showRefreshButton )
-  {
-    playImg.addEventListener( "mouseover", function () {
-      playImg.setAttribute( "src", "images/refresh-hover.png" );
-    });
+  function hover() {
+    playImg.setAttribute("src", "images/refresh-hover.png");
+  }
 
-    playImg.addEventListener( "mouseout", function () {
-      playImg.setAttribute( "src", "images/refresh.png" );
-    });
+  function nonHover() {
+    playImg.setAttribute("src", "images/refresh.png");
+  }
+
+  if (showRefreshButton) {
+    playImg.addEventListener("touchstart", hover);
+    playImg.addEventListener("touchend", nonHover);
+
+    playImg.addEventListener("mouseover", hover);
+    playImg.addEventListener("mouseout", nonHover);
   }
 }

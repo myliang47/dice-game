@@ -1,36 +1,86 @@
-html body {
+html, body {
   background-color: turquoise;
   font-family: 'Chelsea Market', cursive;
   text-align: center;
+  height: 100%;
 }
 
 h1 {
-  margin: 10px auto 80px auto;
+  color: turquoise;
 }
 
-/* prevent div from shifting when play-img changes size */
-/*.fixed-block {
-  display: block;
-}*/
+.title-block {
+  background-color: #FAEBD7
+}
 
-/* used for holding the blocks in the desired position */
-.arbitrary-div {
-  padding: 1rem;
+.dice-block {
+  background-color: turquoise;
+}
+
+@media screen and ( orientation: portrait ) {
+  .title-block {
+    height: 30%;
+    width: auto;
+  }
+
+  .space-b4-title {
+    height: calc( 45% - 3rem );
+  }
+
+  .space-after-title {
+    height: calc( 30% - 3rem);
+  }
+
+  .dice-block {
+    height: 70%;
+  }
+
+  .dice {
+    margin: 12% 35% 0;
+  }
+
+  #title-dice {
+    display: inline-block;
+  }
+
+  #title-game {
+    display: inline-block;
+  }
+}
+
+@media screen and ( orientation: landscape ) {
+  .title-block {
+    display: inline-block;
+    height: 100%;
+    width: 30%;
+    float: left;
+  }
+
+  .space-b4-title {
+    height: calc( 25% - 3rem );
+  }
+
+  .space-after-title {
+    height: calc( 25% - 3rem);
+  }
+
+  .dice-block {
+    float: right;
+    width: 70%;
+    height: 100%;
+  }
+
+  .dice {
+    display: inline-block;
+    margin: 10% calc(10%/3) 0;
+  }
 }
 
 .play-img {
-  margin-top: 2rem;
-  width: 3.5rem;
+  filter: invert(71%) sepia(58%) saturate(460%) hue-rotate(121deg) brightness(97%) contrast(91%);
+  height: 4rem;
 }
 
 .dice {
   width: 30%;
-}
-
-.spacing-after-dice {
-  padding: 0.4rem;
-}
-
-.spacing-bw-dice {
-  padding: 0.75rem;
 }
